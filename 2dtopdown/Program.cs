@@ -1,12 +1,19 @@
-﻿using System;
+﻿
+using System;
 using Raylib_cs;
 
 Raylib.InitWindow(800, 600, "2D-topdown");
 Raylib.SetTargetFPS(60);
 
-Texture2D playerImage = Raylib.LoadTexture("kool.png");
-Rectangle playerRect = new Rectangle(10, 10, 80, 80);
+string room = "Original";
 
+Texture2D gameImage2 = Raylib.LoadTexture("door.png");
+Texture2D gameImage = Raylib.LoadTexture("kool.png");
+Rectangle gameRect = new Rectangle(10, 10, 80, 80);
+Rectangle gameRect2 = new Rectangle(200, 200, 50, 50);
+
+
+Rectangle r1 = new Rectangle(200, 200, 50, 50);
 
 
 while (!Raylib.WindowShouldClose())
@@ -14,35 +21,54 @@ while (!Raylib.WindowShouldClose())
 
 
     Raylib.BeginDrawing();
-
-
-
-    Raylib.ClearBackground(Color.PURPLE);
-
     if (Raylib.IsKeyDown(KeyboardKey.KEY_A))
     {
-        playerRect.x -= 3;
+        gameRect.x -= 3;
     }
 
-if (Raylib.IsKeyDown(KeyboardKey.KEY_S))
+    if (Raylib.IsKeyDown(KeyboardKey.KEY_S))
     {
-        playerRect.y += 3;
+        gameRect.y += 3;
     }
 
     if (Raylib.IsKeyDown(KeyboardKey.KEY_D))
     {
-        playerRect.x += 3;
+        gameRect.x += 3;
     }
 
     if (Raylib.IsKeyDown(KeyboardKey.KEY_W))
     {
-        playerRect.y -= 3;
-        //Raylib.DrawTriangle (10, 10, 10, );
+        gameRect.y -= 3;
     }
 
-    Raylib.DrawRectangleRec(playerRect, Color.WHITE);
 
-    Raylib.DrawTexture(playerImage, (int)playerRect.x, (int)playerRect.y, Color.WHITE);
+
+
+
+
+
+
+    if (Raylib.CheckCollisionRecs(r1, gameRect))
+    {
+        room = "room2";
+    }
+    else
+    {
+    Raylib.ClearBackground(Color.ORANGE);
+    }
+
+if (room == "room2")
+{
+Raylib.ClearBackground(Color.VIOLET);
+}
+
+    Raylib.DrawRectangleRec(gameRect2, Color.WHITE);
+
+    Raylib.DrawTexture(gameImage2, 200, 200, Color.WHITE); 
+
+    Raylib.DrawRectangleRec(gameRect, Color.WHITE);
+
+    Raylib.DrawTexture(gameImage, (int)gameRect.x, (int)gameRect.y, Color.WHITE);
 
     Raylib.EndDrawing();
 
