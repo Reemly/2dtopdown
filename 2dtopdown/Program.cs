@@ -3,21 +3,18 @@ using System;
 using Raylib_cs;
 using System.Numerics;
 
-Raylib.InitWindow(800, 800, "2D-topdown");
+Raylib.InitWindow(800, 600, "2D-topdown");
 Raylib.SetTargetFPS(60);
 
 string room = "Original";
 
-int points = 0;
 
-Texture2D gameImage2 = Raylib.LoadTexture("door.png");
-Texture2D gameImage = Raylib.LoadTexture("kool.png");
+Texture2D doorImage = Raylib.LoadTexture("door.png");
+Texture2D heroImage = Raylib.LoadTexture("hero.png");
 Rectangle gameRect = new Rectangle(10, 10, 80, 80);
-Rectangle gameRect2 = new Rectangle(200, 200, 50, 50);
-Rectangle r1 = new Rectangle(200, 200, 50, 50);
+Rectangle doorRect = new Rectangle(300, 750, 50, 50);
+Rectangle r1 = new Rectangle(300, 750, 50, 50);
 
-bool pointRetrieved = false;
-//fixa poäng olle, använd boolen och inten, kolla mickes antäckningar i github etc
 
 while (!Raylib.WindowShouldClose())
 {
@@ -69,6 +66,11 @@ while (!Raylib.WindowShouldClose())
 
     }
 
+    if (room == "room1")
+    {
+
+    }
+
     if (room == "room2")
     {
         Raylib.ClearBackground(Color.VIOLET);
@@ -85,13 +87,16 @@ while (!Raylib.WindowShouldClose())
     }
 
 
-    Raylib.DrawRectangleRec(gameRect2, Color.WHITE);
+    Raylib.DrawRectangleRec(doorRect, Color.WHITE);
 
-    Raylib.DrawTexture(gameImage2, 200, 200, Color.WHITE);
+    Raylib.DrawTexture(doorImage, 
+        Raylib.GetScreenWidth() - doorImage.width, 
+        Raylib.GetScreenHeight()/2 - doorImage.height/2, 
+        Color.WHITE);
 
     Raylib.DrawRectangleRec(gameRect, Color.WHITE);
 
-    Raylib.DrawTexture(gameImage, (int)gameRect.x, (int)gameRect.y, Color.WHITE);
+    Raylib.DrawTexture(heroImage, (int)gameRect.x, (int)gameRect.y, Color.WHITE);
 
     Raylib.EndDrawing();
 
