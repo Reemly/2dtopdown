@@ -12,8 +12,8 @@ string room = "Original";
 Texture2D doorImage = Raylib.LoadTexture("door.png");
 Texture2D heroImage = Raylib.LoadTexture("hero.png");
 Rectangle gameRect = new Rectangle(10, 10, 80, 80);
-Rectangle doorRect = new Rectangle(300, 750, 50, 50);
-Rectangle r1 = new Rectangle(300, 750, 50, 50);
+Rectangle doorRect = new Rectangle(750, 275, 50, 50);
+Rectangle r1 = new Rectangle(750, 275, 50, 50);
 
 
 while (!Raylib.WindowShouldClose())
@@ -23,8 +23,7 @@ while (!Raylib.WindowShouldClose())
     Raylib.BeginDrawing();
 
 
-
-
+    // -- GENERAL
 
     if (Raylib.IsKeyDown(KeyboardKey.KEY_A))
     {
@@ -48,33 +47,25 @@ while (!Raylib.WindowShouldClose())
 
 
 
-
-
-
-
-
-    if (Raylib.CheckCollisionRecs(r1, gameRect))
-    {
-        gameRect.x += 2;
-        room = "room2";
-    }
-    else
-    {
-        Raylib.ClearBackground(Color.ORANGE);
-         
-
-
-    }
-
+    // ROOM 1
     if (room == "room1")
     {
+        Raylib.ClearBackground(Color.ORANGE);
+        
+        if (Raylib.CheckCollisionRecs(r1, gameRect))
+        {
+            gameRect.x += 2;
+            room = "room2";
 
+
+        }
     }
+
+    // ROOM 2s
 
     if (room == "room2")
     {
-        Raylib.ClearBackground(Color.VIOLET);
-        Raylib.DrawText("You winner!!", 275, 300, 40, Color.BLACK);
+        Raylib.ClearBackground(Color.DARKGREEN);
 
         if (Raylib.CheckCollisionRecs(r1, gameRect))
         {
@@ -82,16 +73,16 @@ while (!Raylib.WindowShouldClose())
         }
         else
         {
-            Raylib.ClearBackground(Color.VIOLET);
+            Raylib.ClearBackground(Color.DARKGREEN);
         }
     }
 
 
     Raylib.DrawRectangleRec(doorRect, Color.WHITE);
 
-    Raylib.DrawTexture(doorImage, 
-        Raylib.GetScreenWidth() - doorImage.width, 
-        Raylib.GetScreenHeight()/2 - doorImage.height/2, 
+    Raylib.DrawTexture(doorImage,
+        Raylib.GetScreenWidth() - doorImage.width,
+        Raylib.GetScreenHeight() / 2 - doorImage.height / 2,
         Color.WHITE);
 
     Raylib.DrawRectangleRec(gameRect, Color.WHITE);
