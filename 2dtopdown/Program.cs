@@ -11,8 +11,13 @@ string room = "Original";
 
 Texture2D doorImage = Raylib.LoadTexture("door.png");
 Texture2D heroImage = Raylib.LoadTexture("hero.png");
+Texture2D doorImageLocked = Raylib.LoadTexture("lockeddor.png");
 Rectangle gameRect = new Rectangle(10, 10, 80, 80);
 Rectangle doorRect = new Rectangle(750, 275, 50, 50);
+Rectangle doorRect2 = new Rectangle(750, 275, 50, 50);
+//Rectangle doorRect3 = new Rectangle(750, 275, 50, 50);
+//Rectangle doorRect4 = new Rectangle(750, 275, 50, 50);
+
 Rectangle r1 = new Rectangle(doorRect.x, doorRect.y, 50, 50);
 
     room = "room1";
