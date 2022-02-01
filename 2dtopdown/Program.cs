@@ -20,7 +20,9 @@ Rectangle doorRect2 = new Rectangle(750, 275, 50, 50);
 
 Rectangle r1 = new Rectangle(doorRect.x, doorRect.y, 50, 50);
 
-    room = "room1";
+room = "room1";
+
+int countdown = 0;
 
 while (!Raylib.WindowShouldClose())
 {
@@ -31,8 +33,8 @@ while (!Raylib.WindowShouldClose())
 
     // -- GENERAL
 
-        Raylib.DrawRectangleRec(gameRect, Color.WHITE);
-        Raylib.DrawTexture(heroImage, (int)gameRect.x, (int)gameRect.y, Color.WHITE);
+    Raylib.DrawRectangleRec(gameRect, Color.WHITE);
+    Raylib.DrawTexture(heroImage, (int)gameRect.x, (int)gameRect.y, Color.WHITE);
 
 
     if (Raylib.IsKeyDown(KeyboardKey.KEY_A))
@@ -61,15 +63,12 @@ while (!Raylib.WindowShouldClose())
     if (room == "room1")
     {
         Raylib.ClearBackground(Color.ORANGE);
-//Door/room1
+        //Door/room1
         Raylib.DrawRectangleRec(doorRect, Color.WHITE);
-        Raylib.DrawTexture(doorImage,
-            Raylib.GetScreenWidth() - doorImage.width,
-            Raylib.GetScreenHeight() / 2 - doorImage.height / 2,
-            Color.WHITE);
-//Hero/room1
+        Raylib.DrawTexture(doorImage, 750, 250, Color.WHITE);
+        //Hero/room1
 
-//InteractCheck/room1
+        //InteractCheck/room1
         if (Raylib.CheckCollisionRecs(r1, gameRect))
         {
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_E))
@@ -86,19 +85,25 @@ while (!Raylib.WindowShouldClose())
     if (room == "room2")
     {
         Raylib.ClearBackground(Color.DARKGREEN);
-//Door/room2
+        //Door/room2
         Raylib.DrawRectangleRec(doorRect, Color.WHITE);
-        Raylib.DrawTexture(doorImage, 0, Raylib.GetScreenHeight() / 2 - doorImage.height / 2, Color.WHITE);
+        Raylib.DrawTexture(doorImageLocked, 50, 300, Color.WHITE);
 
-//Hero/room2
+        //Hero/room2
 
-//InteractCheck/room1
+        //InteractCheck/room1
         if (Raylib.CheckCollisionRecs(r1, gameRect))
         {
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_E))
             {
-                Raylib.DrawText("Hi",300, 200, 90,Color.BLACK);
+                countdown = 120;
             }
+        }
+
+        if (countdown > 0)
+        {
+            Raylib.DrawText("The door is sealed", 100, 150, 50, Color.BLACK);
+            countdown--;
         }
     }
 
@@ -108,5 +113,5 @@ while (!Raylib.WindowShouldClose())
 }
 
 
-//MESSAGE OF LAST LESSON: Du ska göra så att dörren av bilden hamnar tvärt emot där den ligger i rum 1, sen så ska du också göra en ny bild där dörren har gller framför sig, och du ska göra så att om man trycker E på dörren bakom galler så kommer det upp ett meddelande som säger att den är låst.
+//MESSAGE OF LAST LESSON: Du ska göra så att dörren av bilden hamnar tvärt emot där den ligger i rum 1, sen så ska du också göra en ny bild där dörren har galler framför sig, och du ska göra så att om man trycker E på dörren bakom galler så kommer det upp ett meddelande som säger att den är låst.
 
