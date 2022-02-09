@@ -8,17 +8,27 @@ Raylib.SetTargetFPS(60);
 
 string room = "Original";
 
-
+//images
 Texture2D doorImage = Raylib.LoadTexture("door.png");
 Texture2D heroImage = Raylib.LoadTexture("hero.png");
 Texture2D doorImageLocked = Raylib.LoadTexture("lockeddor.png");
+Texture2D doorfire = Raylib.LoadTexture("door3.png");
+Texture2D doorplant = Raylib.LoadTexture("door4.png");
+
+//goes under image
 Rectangle gameRect = new Rectangle(10, 10, 80, 80);
 Rectangle doorRect = new Rectangle(750, 275, 50, 50);
-Rectangle doorRect2 = new Rectangle(750, 275, 50, 50);
-//Rectangle doorRect3 = new Rectangle(750, 275, 50, 50);
-//Rectangle doorRect4 = new Rectangle(750, 275, 50, 50);
+Rectangle doorRect2 = new Rectangle(0, 275, 50, 50);
+Rectangle doorRect3 = new Rectangle(750, 275, 50, 50);
+Rectangle doorRect4 = new Rectangle(750, 275, 50, 50);
+Rectangle doorRect5 = new Rectangle(750, 275, 50, 50);
 
 Rectangle r1 = new Rectangle(doorRect.x, doorRect.y, 50, 50);
+Rectangle r2 = new Rectangle(doorRect2.x, doorRect2.y, 50, 50);
+Rectangle r3 = new Rectangle(doorRect3.x, doorRect3.y, 50, 50);
+Rectangle r4 = new Rectangle(doorRect4.x, doorRect4.y, 50, 50);
+Rectangle r5 = new Rectangle(doorRect5.x, doorRect5.y, 50, 50);
+
 
 room = "room1";
 
@@ -63,10 +73,11 @@ while (!Raylib.WindowShouldClose())
     if (room == "room1")
     {
         Raylib.ClearBackground(Color.ORANGE);
+        Raylib.DrawText("E to open Doors.", 400, 100, 30, Color.BLUE);
         //Door/room1
         Raylib.DrawRectangleRec(doorRect, Color.WHITE);
-        Raylib.DrawTexture(doorImage, 750, 250, Color.WHITE);
-        //Hero/room1
+        Raylib.DrawTexture(doorImage, (int)doorRect.x, (int) doorRect.y, Color.WHITE);
+
 
         //InteractCheck/room1
         if (Raylib.CheckCollisionRecs(r1, gameRect))
@@ -74,6 +85,7 @@ while (!Raylib.WindowShouldClose())
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_E))
             {
                 room = "room2";
+                
             }
 
 
@@ -87,13 +99,20 @@ while (!Raylib.WindowShouldClose())
 
         Raylib.ClearBackground(Color.DARKGREEN);
         //Door/room2
-        Raylib.DrawRectangleRec(doorRect, Color.WHITE);
-        Raylib.DrawTexture(doorImageLocked, 50, 300, Color.WHITE);
+        Raylib.DrawRectangleRec(doorRect2, Color.WHITE);
+        Raylib.DrawTexture(doorImageLocked, (int)doorRect2.x, (int)doorRect2.y, Color.WHITE);
 
-        //Hero/room2
-
+        //doorfire/room2
+Raylib.DrawRectangleRec(doorRect3, Color.WHITE);
+Raylib.DrawTexture(doorfire, (int)doorRect3.x, (int)doorRect3.y, Color.WHITE);
+        //doorplant/room2
+Raylib.DrawRectangleRec(doorRect4, Color.WHITE);
+Raylib.DrawTexture(doorplant, (int)doorRect4.x, (int)doorRect4.y, Color.WHITE);
+        //doorwater/room2
+Raylib.DrawRectangleRec(doorRect5, Color.WHITE);
+Raylib.DrawTexture(, (int)doorRect5.x, (int)doorRect5.y, Color.WHITE);
         //InteractCheck/room1
-        if (Raylib.CheckCollisionRecs(r1, gameRect))
+        if (Raylib.CheckCollisionRecs(r2, gameRect))
         {
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_E))
             {
@@ -107,6 +126,7 @@ while (!Raylib.WindowShouldClose())
             Raylib.DrawText("The door is sealed", 100, 150, 50, Color.BLACK);
             countdown--;
         }
+        
     }
 
 
@@ -115,5 +135,5 @@ while (!Raylib.WindowShouldClose())
 }
 
 
-//MESSAGE OF LAST LESSON: Du ska göra så att dörren av bilden hamnar tvärt emot där den ligger i rum 1, sen så ska du också göra en ny bild där dörren har galler framför sig, och du ska göra så att om man trycker E på dörren bakom galler så kommer det upp ett meddelande som säger att den är låst.
+//MESSAGE OF LAST LESSON: work on water door and make rects for them.
 
