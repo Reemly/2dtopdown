@@ -11,16 +11,17 @@ string room = "Original";
 //images
 Texture2D doorImage = Raylib.LoadTexture("door.png");
 Texture2D heroImage = Raylib.LoadTexture("hero.png");
-Texture2D doorImageLocked = Raylib.LoadTexture("lockeddor.png");
+Texture2D doorImageLocked = Raylib.LoadTexture("lockeddoor.png");
 Texture2D doorfire = Raylib.LoadTexture("door3.png");
 Texture2D doorplant = Raylib.LoadTexture("door4.png");
+Texture2D Watergate = Raylib.LoadTexture("watergate.png");
 
 //goes under image
 Rectangle gameRect = new Rectangle(10, 10, 80, 80);
 Rectangle doorRect = new Rectangle(750, 275, 50, 50);
 Rectangle doorRect2 = new Rectangle(0, 275, 50, 50);
-Rectangle doorRect3 = new Rectangle(750, 275, 50, 50);
-Rectangle doorRect4 = new Rectangle(750, 275, 50, 50);
+Rectangle doorRect3 = new Rectangle(350, 0, 50, 50);
+Rectangle doorRect4 = new Rectangle(350, 550, 50, 50);
 Rectangle doorRect5 = new Rectangle(750, 275, 50, 50);
 
 Rectangle r1 = new Rectangle(doorRect.x, doorRect.y, 50, 50);
@@ -28,6 +29,7 @@ Rectangle r2 = new Rectangle(doorRect2.x, doorRect2.y, 50, 50);
 Rectangle r3 = new Rectangle(doorRect3.x, doorRect3.y, 50, 50);
 Rectangle r4 = new Rectangle(doorRect4.x, doorRect4.y, 50, 50);
 Rectangle r5 = new Rectangle(doorRect5.x, doorRect5.y, 50, 50);
+
 
 
 room = "room1";
@@ -47,25 +49,28 @@ while (!Raylib.WindowShouldClose())
     Raylib.DrawTexture(heroImage, (int)gameRect.x, (int)gameRect.y, Color.WHITE);
 
 
+
     if (Raylib.IsKeyDown(KeyboardKey.KEY_A))
     {
-        gameRect.x -= 3;
+        gameRect.x -= 5;
     }
 
     if (Raylib.IsKeyDown(KeyboardKey.KEY_S))
     {
-        gameRect.y += 3;
+        gameRect.y += 5;
     }
 
     if (Raylib.IsKeyDown(KeyboardKey.KEY_D))
     {
-        gameRect.x += 3;
+        gameRect.x += 5;
     }
 
     if (Raylib.IsKeyDown(KeyboardKey.KEY_W))
     {
-        gameRect.y -= 3;
+        gameRect.y -= 5;
     }
+
+    
 
 
 
@@ -76,7 +81,7 @@ while (!Raylib.WindowShouldClose())
         Raylib.DrawText("E to open Doors.", 400, 100, 30, Color.BLUE);
         //Door/room1
         Raylib.DrawRectangleRec(doorRect, Color.WHITE);
-        Raylib.DrawTexture(doorImage, (int)doorRect.x, (int) doorRect.y, Color.WHITE);
+        Raylib.DrawTexture(doorImage, (int)doorRect.x, (int)doorRect.y, Color.WHITE);
 
 
         //InteractCheck/room1
@@ -85,8 +90,10 @@ while (!Raylib.WindowShouldClose())
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_E))
             {
                 room = "room2";
-                
+                gameRect.x = 0;
+                gameRect.y = 250;
             }
+
 
 
         }
@@ -103,14 +110,15 @@ while (!Raylib.WindowShouldClose())
         Raylib.DrawTexture(doorImageLocked, (int)doorRect2.x, (int)doorRect2.y, Color.WHITE);
 
         //doorfire/room2
-Raylib.DrawRectangleRec(doorRect3, Color.WHITE);
-Raylib.DrawTexture(doorfire, (int)doorRect3.x, (int)doorRect3.y, Color.WHITE);
+        Raylib.DrawRectangleRec(doorRect3, Color.WHITE);
+        Raylib.DrawTexture(doorfire, (int)doorRect3.x, (int)doorRect3.y, Color.WHITE);
         //doorplant/room2
-Raylib.DrawRectangleRec(doorRect4, Color.WHITE);
-Raylib.DrawTexture(doorplant, (int)doorRect4.x, (int)doorRect4.y, Color.WHITE);
+        Raylib.DrawRectangleRec(doorRect4, Color.WHITE);
+        Raylib.DrawTexture(doorplant, (int)doorRect4.x, (int)doorRect4.y, Color.WHITE);
         //doorwater/room2
-Raylib.DrawRectangleRec(doorRect5, Color.WHITE);
-Raylib.DrawTexture(, (int)doorRect5.x, (int)doorRect5.y, Color.WHITE);
+        Raylib.DrawRectangleRec(doorRect, Color.WHITE);
+        Raylib.DrawTexture(Watergate, (int)doorRect.x, (int)doorRect.y, Color.WHITE);
+
         //InteractCheck/room1
         if (Raylib.CheckCollisionRecs(r2, gameRect))
         {
@@ -119,15 +127,74 @@ Raylib.DrawTexture(, (int)doorRect5.x, (int)doorRect5.y, Color.WHITE);
                 countdown = 120;
             }
         }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+
+
         if (countdown > 0)
         {
             Raylib.DrawText("The door is sealed", 100, 150, 50, Color.BLACK);
             countdown--;
         }
-        
+        if (Raylib.CheckCollisionRecs(r3, gameRect))
+        {
+            if (Raylib.IsKeyPressed(KeyboardKey.KEY_E))
+            {
+                room = "roomfire";
+                gameRect.x = 0;
+                gameRect.y = 250;
+            }
+
+
+
+        }
+        if (Raylib.CheckCollisionRecs(r1, gameRect))
+        {
+            if (Raylib.IsKeyPressed(KeyboardKey.KEY_E))
+            {
+                room = "roomwater";
+                gameRect.x = 0;
+                gameRect.y = 250;
+            }
+
+
+
+        }
+        if (Raylib.CheckCollisionRecs(r4, gameRect))
+        {
+            if (Raylib.IsKeyPressed(KeyboardKey.KEY_E))
+            {
+                room = "roomplant";
+                gameRect.x = 0;
+                gameRect.y = 250;
+            }
+
+
+
+        }
     }
+
+if (room == "roomfire") {
+Raylib.ClearBackground(Color.MAROON);
+
+
+
+
+}
+if (room == "roomwater") {
+Raylib.ClearBackground(Color.BLUE);
+
+
+
+
+
+}
+if (room == "roomplant") {
+Raylib.ClearBackground(Color.LIME);
+
+
+
+
+
+}
 
 
     Raylib.EndDrawing();
